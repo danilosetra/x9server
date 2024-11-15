@@ -19,11 +19,11 @@ class IGUser {
 
   async setup() {
     this.#sessionPath = `_temp_json_states/${this.#username}.json`;
-    if (fs.existsSync(this.#sessionPath)) {
-      await this.ig.state.deserialize(fs.readFileSync(this.#sessionPath).toString());
-    } else {
-      await this.auth();
-    }
+    // if (fs.existsSync(this.#sessionPath)) {
+    // await this.ig.state.deserialize(fs.readFileSync(this.#sessionPath).toString());
+    // } else {
+    await this.auth();
+    // }
 
     this.ig.request.end$.subscribe(async () => {
       await this.saveState();
